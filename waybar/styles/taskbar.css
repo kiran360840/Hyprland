@@ -1,0 +1,117 @@
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "SF Pro Display", "JetBrainsMono Nerd Font Propo";
+    font-size: 13px;
+    min-height: 0;
+    padding: 0 0;
+    margin: 0 0;
+}
+
+window#waybar {
+    background: alpha(#000000, 0.0);
+    color: white;
+}
+
+#battery.charging {
+    color: white;
+    background-color: alpha(#66fabc, 0.9);
+}
+
+#battery.warning:not(.charging) {
+    background: alpha(#f0dc27, 0.9);
+    color: white;
+}
+
+#battery.charging.warning {
+    background: alpha(#e9f53c, 0.9);
+    color: #000000;
+}
+
+#battery.critical:not(.charging) {
+    background: alpha(#f53c3c, 0.9);
+    color: white;
+}
+
+#battery.charging.critical {
+    background: alpha(#fa8638, 0.9);
+    color: #000000;
+}
+
+#custom-spotify {
+    font-size: 14px;
+    background: #000000;
+    border-radius: 10px;
+    margin: 4px;
+    min-width: 35px;
+}
+
+#custom-spotify.playing {
+    color: #91e66c;
+}
+
+#custom-spotify.paused {
+    color: #91e66c;
+}
+
+#custom-spotify.stopped {
+    color: #91e66c;
+}
+
+#custom-discord {
+    font-size: 14px;
+    background: #000000;
+    color: #457aff;
+    border-radius: 10px;
+    margin: 4px;
+    min-width: 35px;
+}
+
+#temperature.warning {
+    background: #f5e33c;
+}
+
+#temperature.critical {
+    background: #f53c3c;
+}
+
+#taskbar {
+    background-color: #000000;
+    color: #ffffff;
+    border-radius: 10px;
+    padding: 0 10px;
+    margin: 0 3px;
+}
+
+#taskbar button {
+    color: #69f8d6;
+    margin: 0 2px;
+}
+
+#taskbar button:hover {
+    background: rgba(0, 0, 0, 0.2);
+    box-shadow: none;
+    text-shadow: none;
+    color: #ffffff;
+    border-bottom: 2px solid #69f8d6;
+}
+
+#taskbar.empty {
+    background-color: transparent;
+    color: transparent;
+}
+
+#cpu,
+#disk,
+#memory,
+#temperature,
+#pulseaudio,
+#network,
+#battery,
+#backlight,
+#clock {
+    background: alpha(#232230, 0.9);
+    border-radius: 10px;
+    margin: 0 1px;
+    padding: 0 10px;
+}

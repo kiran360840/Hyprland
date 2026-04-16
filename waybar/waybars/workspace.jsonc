@@ -1,0 +1,180 @@
+{
+    "layer": "top",
+    "height": 30,
+    "positon": "fixed",
+    "modules-left": [
+        // "disk",
+        "memory",
+        "cpu",
+        "temperature",
+        "clock"
+    ],
+    "modules-center": [
+        "custom/discord",
+        "hyprland/workspaces",
+        "custom/spotify"
+    ],
+    "modules-right": [
+        "pulseaudio",
+        "backlight",
+        "battery",
+        "network"
+    ],
+    "sway/window": {
+        "max-length": 50
+    },
+    // #Battery
+    "battery": {
+        "interval": 30,
+        "states": {
+            "warning": 20,
+            "critical": 10
+        },
+        "format": "{capacity}% {icon}",
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "on-click": "~/,config/Execute-Able/Scripts/battries.sh",
+        "max-length": 25
+    },
+    // #Clock
+    "clock": {
+        "format": "{:%H:%M} ",
+        "format-alt": "{:%A, %B %d} ",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "calendar": {
+            "mode": "year",
+            "mode-mon-col": 3,
+            "weeks-pos": "right",
+            "on-scroll": 1,
+            "format": {
+                "months": "<span color='#ffead3'><b>{}</b></span>",
+                "days": "<span color='#ecc6d9'><b>{}</b></span>",
+                "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+                "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+                "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+            }
+        },
+        "actions": {
+            "on-click-right": "mode",
+            "on-scroll-up": "tz_up",
+            "on-scroll-down": "tz_down",
+            "on-scroll-up": "shift_up",
+            "on-scroll-down": "shift_down"
+        }
+    },
+    // #Volume/Audio
+    "pulseaudio": {
+        "format": "{volume}% {icon}",
+        "format-bluetooth": "{volume}% {icon}",
+        "format-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "phone-muted": "",
+            "portable": "",
+            "car": "",
+            "default": [
+                "",
+                "",
+                ""
+            ]
+        },
+        "scroll-step": 1,
+        "on-click": "pavucontrol",
+        "ignored-sinks": [
+            "Easy Effects Sink"
+        ]
+    },
+    // #Wifi/Internet
+    "network": {
+        "interface": "wlan0",
+        "format": "{ifname}",
+        "format-wifi": " {essid}",
+        "format-ethernet": "{ipaddr}/{cidr} ",
+        "format-disconnected": "󰖪 DisConn",
+        "tooltip-format": "{ifname} via {gwaddr} ",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+        "tooltip-format-ethernet": "{ifname} ",
+        "tooltip-format-disconnected": "Disconnected",
+        "on-click": "~/.config/Execute-Able/Scripts/wifi.sh",
+        "max-length": 50
+    },
+    // #Workspace
+    "hyprland/workspaces": {
+        "format": "{name}",
+        "on-click": "activate",
+        "format-icons": {
+            "1": "",
+            "2": "",
+            "3": ""
+        },
+        "persistent-workspaces": {
+            "*": 10
+        },
+        "sort-by-number": true
+    },
+    // #Brightness
+    "backlight": {
+        "device": "intel_backlight",
+        "format": "{percent}% {icon}",
+        "format-icons": [
+            "󰃞",
+            "󰃟",
+            "󰃠"
+        ]
+    },
+    // #Cpu-Usage
+    "cpu": {
+        "interval": 1,
+        "format": "{usage}% ",
+        "max-length": 10
+    },
+    // #Memory-Usage
+    "memory": {
+        "interval": 1,
+        "format": "{percentage}% ",
+        "max-length": 10
+    },
+    // #Disk-Usage
+    "disk": {
+        "interval": 1,
+        "format": "{percentage_used}% ",
+        "tooltip-format": "{used} used"
+    },
+    // #Tempreture of laptop
+    "temperature": {
+        "thermal-zone": 2,
+        "interval": 1,
+        "warning-threshold": 80,
+        "critical-threshold": 100,
+        "format-critical": "{temperatureC}°C ",
+        "format": "{temperatureC}°C "
+    },
+    // #Spotify
+    "custom/spotify": {
+        "format": "{}",
+        "return-type": "json",
+        "on-click": "pgrep -x spotify > /dev/null && playerctl -p spotify play-pause || spotify",
+        "on-click-right": "hyprctl dispatch togglespecialworkspace music",
+        "exec": "~/.config/waybar/scripts/spotify.sh",
+        "interval": 2,
+        "escape": true
+    },
+    // #Discord
+    "custom/discord": {
+        "format": "{}",
+        "return-type": "json",
+        "interval": 1,
+        "exec": "~/.config/waybar/scripts/discord.sh",
+        "on-click": "pgrep -ix legcord > /dev/null && hyprctl dispatch focuswindow class:legcord || legcord",
+        "on-click-right": "pkill -9 legcord",
+        "escape": true
+    }
+}
