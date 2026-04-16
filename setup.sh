@@ -12,7 +12,7 @@ if [ ! -f "$PKG_FILE" ]; then
 fi
 
 # Check if yay is installed
-echo "🔍 Checking for yay..."
+echo "Checking for yay..."
 if ! command -v yay &> /dev/null; then
     echo "yay is not installed!!"
     echo "Installing yay dependencies (git and base-devel)..."
@@ -27,6 +27,22 @@ else
     echo "yay is already installed!!"
 fi
 
+# Check if swww is installed
+echo "Checking for swww..."
+if ! command -v swww &> /dev/null; then
+    echo "swww is not installed!!"
+    echo "Installing swww!!"
+    echo "Cloning and building swww..."
+    git clone https://github.com/LGFae/swww.git
+    cd swww
+    cargo build --release
+    ./doc/gen.sh
+    rm -rf swww
+    cd ~
+else
+    echo "yay is already installed!!"
+fi
+
 # Final Confirmation
 total_pkgs=$(wc -l < "$PKG_FILE")
 echo "Found $total_pkgs packages to install."
@@ -35,8 +51,8 @@ read -p "Do you want to proceed? (y/n): " confirm
 if [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]]; then
     echo "Installing... this may take a while."
     yay -S --needed --noconfirm - < "$PKG_FILE"
-    echo "✨ All done!"
+    echo "All done!"
 else
-    echo "❌ Installation cancelled."
+    echo "Installation cancelled."
     exit 0
 fi
