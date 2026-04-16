@@ -1,0 +1,74 @@
+configuration {
+    show-icons: false;
+    hover-select: true;
+    me-select-entry: "";
+    me-accept-entry: "MousePrimary";
+}
+
+* {
+    /* Smaller font for 1366x768 */
+    font: "JetBrainsMono Nerd Font 45";
+    bg: #1e1e2eE6;
+    bg-alt: #313244;
+    fg: #cdd6f4;
+    sel: #89b4fa;
+}
+
+window {
+    transparency: "real";
+    location: center;
+    anchor: center;
+    fullscreen: false;
+    /* Scaled down window size */
+    width: 700px;
+    height: 450px;
+    border: 2px solid;
+    border-radius: 12px;
+    border-color: #313244;
+    background-color: @bg;
+}
+
+mainbox {
+    background-color: transparent;
+    children: [ "listview" ];
+}
+
+listview {
+    enabled: true;
+    columns: 3;
+    lines: 2;
+    cycle: true;
+    dynamic: true;
+    scrollbar: false;
+    layout: vertical;
+    /* Reduced spacing and margins */
+    spacing: 20px;
+    margin: 40px;
+    background-color: transparent;
+}
+
+element {
+    enabled: true;
+    padding: 30px 0px;
+    border-radius: 12px;
+    background-color: transparent;
+    text-color: @fg;
+    orientation: vertical;
+    cursor: pointer;
+}
+
+element-text {
+    /* Icon size scaled for your screen */
+    font: "JetBrainsMono Nerd Font 55";
+    background-color: transparent;
+    text-color: inherit;
+    vertical-align: 0.5;
+    horizontal-align: 0.5;
+}
+
+element selected.normal {
+    background-color: @bg-alt;
+    text-color: @sel;
+    border: 2px solid;
+    border-color: @sel;
+}

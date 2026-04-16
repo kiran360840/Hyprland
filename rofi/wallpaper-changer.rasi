@@ -1,0 +1,88 @@
+configuration {
+    show-icons:                 true;
+    hover-select:               true;
+    me-select-entry:            "";
+    me-accept-entry:            "MousePrimary";
+}
+
+* {
+    bg:                          #1e1e2eE6;
+    bg-alt:                      #313244;
+    fg:                          #cdd6f4;
+    sel:                         #89b4fa;
+    accent:                      #f5c2e7;
+}
+
+window {
+    transparency:                "real";
+    location:                    center;
+    anchor:                      center;
+    width:                       800px;
+    height:                      360px;
+    enabled:                     true;
+    border:                      2px solid;
+    border-radius:               15px;
+    border-color:                #313244;
+    background-color:            @bg;
+}
+
+mainbox {
+    background-color:            transparent;
+    children:                    [ "textbox-header", "listview" ];
+}
+
+/* The "Wallpaper" text at the top */
+textbox-header {
+    expand:                      false;
+    content:                     "Wallpapers";
+    font:                        "JetBrainsMono Nerd Font Bold 16";
+    background-color:            transparent;
+    text-color:                  @accent;
+    padding:                     20px 0px 0px 0px;
+    horizontal-align:            0.5;
+}
+
+listview {
+    enabled:                     true;
+    columns:                     3;
+    lines:                       1;
+    spacing:                     20px;
+    margin:                      20px 30px;
+    cycle:                       true;
+    dynamic:                     true;
+    scrollbar:                   false;
+    layout:                      vertical;
+    background-color:            transparent;
+}
+
+element {
+    enabled:                     true;
+    padding:                     10px;
+    border-radius:               12px;
+    background-color:            @bg-alt;
+    text-color:                  @fg;
+    orientation:                 vertical;
+}
+
+element-icon {
+    size:                        150px; /* Slightly smaller to fit header */
+    horizontal-align:            0.5;
+    vertical-align:              0.5;
+    background-color:            transparent;
+}
+
+element-text {
+    font:                        "JetBrainsMono Nerd Font 10";
+    horizontal-align:            0.5;
+    vertical-align:              0.5;
+    padding:                     5px 0px;
+    background-color:            transparent;
+    text-color:                  inherit;
+}
+
+element selected.normal {
+    background-color:            @bg-alt;
+    text-color:                  @sel;
+    border:                      2px solid;
+    border-color:                @sel;
+}

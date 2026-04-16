@@ -1,0 +1,96 @@
+/*******************************************************************************
+ * ROFI CLIPBOARD THEME - OPTIMIZED FOR 1366x768
+ *******************************************************************************/
+
+configuration {
+    show-icons: true;
+    display-dmenu: "📋";
+    disable-history: false;
+}
+
+* {
+    font: "JetBrainsMono Nerd Font 10";
+    
+    /* Tokyo Night Colors */
+    bg0:    #1a1b26ee; /* Semi-transparent background */
+    bg1:    #24283b;
+    fg0:    #c0caf5;
+    accent: #7aa2f7;
+    urgent: #f7768e;
+    
+    background-color: transparent;
+    text-color:       @fg0;
+}
+
+window {
+    width:            450px;
+    height:           400px;
+    anchor:           center;
+    location:         center;
+    x-offset:         0;
+    y-offset:         0;
+
+    background-color: @bg0;
+    border:           2px;
+    border-color:     @accent;
+    border-radius:    12px;
+}
+
+mainbox {
+    spacing:          0px;
+    children:         [ "inputbar", "listview" ];
+}
+
+inputbar {
+    padding:          12px;
+    background-color: @bg1;
+    children:         [ "prompt", "entry" ];
+}
+
+prompt {
+    margin:           0px 10px 0px 0px;
+    text-color:       @accent;
+}
+
+entry {
+    placeholder:      "Search Clipboard...";
+    placeholder-color: #565f89;
+    text-color:       @fg0;
+}
+
+listview {
+    padding:          8px;
+    columns:          1;
+    lines:            8;
+    fixed-height:     false;
+    scrollbar:        false;
+    layout:           vertical;
+}
+
+element {
+    padding:          8px;
+    spacing:          12px;
+    border-radius:    8px;
+    orientation:      horizontal;
+    children:         [ "element-icon", "element-text" ];
+}
+
+element normal.normal {
+    background-color: transparent;
+    text-color:       @fg0;
+}
+
+element selected.normal {
+    background-color: @accent;
+    text-color:       @bg1;
+}
+
+element-icon {
+    size:             10px; /* Balanced size for thumbnails */
+    border-radius:    4px;
+}
+
+element-text {
+    vertical-align:   0.5;
+    text-color:       inherit;
+}
